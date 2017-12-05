@@ -1,0 +1,1 @@
+remove gravitee-repository-elasticsearch-2x-1.11.2
