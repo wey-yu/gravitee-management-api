@@ -1,0 +1,15 @@
+<html>
+	<body style="text-align: center;">
+		<header>
+			<#include "header.html" />
+		</header>
+		<div style="margin-top: 50px; color: #424e5a;">
+			<#if user.firstname?? && user.lastname??>
+				<h3>Hi ${user.firstname} ${user.lastname},</h3>
+			<#else>
+				<h3>Hi ${user.username},</h3>
+			</#if>
+			<p>You are now a member of the group: <b>${group.name}</b></p>
+		</div>
+	</body>
+</html>

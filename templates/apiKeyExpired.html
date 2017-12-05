@@ -1,0 +1,20 @@
+<html>
+	<body style="text-align: center;">
+		<header>
+			<#include "header.html" />
+		</header>
+		<div style="margin-top: 50px; color: #424e5a;">
+			<#if owner.firstname?? && owner.lastname??>
+				<h3>Hi ${owner.firstname} ${owner.lastname},</h3>
+			<#else>
+				<h3>Hi ${owner.username},</h3>
+			</#if>
+
+			<#if expirationDate??>
+                <p>The API Key <code>${apiKey}</code> will expire the ${expirationDate?date} at ${expirationDate?time}.
+			<#else>
+				<p>The API Key <code>${apiKey}</code> has expired.
+			</#if>
+		</p>
+	</body>
+</html>
