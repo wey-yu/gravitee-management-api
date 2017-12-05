@@ -75,7 +75,7 @@ jetty:
 management:
   type: mongodb
   mongodb:
-     uri: "${MONGODB_ADDON_URI}"
+     uri: ${ds.mongodb.uri}
 #    uri: mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
 
 # Management repository: clustered MongoDB
@@ -111,8 +111,8 @@ services:
 analytics:
   type: elasticsearch
   elasticsearch:
-    hosts:
-      - ${ds.elastic.host}:${ds.elastic.port}
+    endpoints:
+      - ${ds.elastic.uri}
 #    index: gravitee
 #    cluster: elasticsearch
 
@@ -231,14 +231,12 @@ email:
 ds:
   mongodb:
     dbname: gravitee
-    host: ${GRAVITEEIO_MONGODB_HOST:localhost}
-    port: ${GRAVITEEIO_MONGODB_PORT:27017}
+    uri: ${MONGODB_ADDON_URI}
   elastic:
-    host: ${GRAVITEEIO_ELASTIC_HOST:localhost}
-    port: ${GRAVITEEIO_ELASTIC_PORT:9300}
+    uri: ${ES_ADDON_URI}
 
 jwt:
-  secret: myJWT4Gr4v1t33_S3cr3t
+  secret: ${JWT_SECRET}
   # Allows to define the end of validity of the token in seconds (default 604800 = a week)
   #expire-after: 604800
   # Allows to define the end of validity of the token in seconds for email registration (default 86400 = a day)
